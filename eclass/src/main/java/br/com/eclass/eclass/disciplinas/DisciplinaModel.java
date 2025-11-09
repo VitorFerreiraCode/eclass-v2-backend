@@ -2,6 +2,7 @@ package br.com.eclass.eclass.disciplinas;
 
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -22,6 +23,9 @@ public class DisciplinaModel {
     private Integer ano;
     private Integer semestre;
     private boolean ativo;
+    
+    @Column(nullable = true)
+    private String fotoUrl;
     
     // private UUID curso;
     private UUID turma;

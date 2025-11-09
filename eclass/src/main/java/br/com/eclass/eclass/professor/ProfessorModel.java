@@ -22,5 +22,8 @@ public class ProfessorModel {
     @Column(unique = true)
     private String email;
     private String senha;
+    
+    @Column(nullable = true)
+    private String fotoUrl;
 
 }

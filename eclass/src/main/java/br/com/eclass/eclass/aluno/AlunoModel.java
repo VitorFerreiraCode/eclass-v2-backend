@@ -33,6 +33,9 @@ public class AlunoModel {
 
     private String telefone;
 
+    @Column(nullable = true)
+    private String fotoUrl;
+
     @CreationTimestamp
     private LocalDateTime dataCriacao;
 }
