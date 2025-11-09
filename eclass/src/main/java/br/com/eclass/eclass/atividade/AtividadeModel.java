@@ -23,6 +23,7 @@ public class AtividadeModel {
     private String dataEntrega;
     private Integer notaMaxima;
     
+    private UUID conteudo;
     private UUID disciplina;
     private UUID professor;
 
