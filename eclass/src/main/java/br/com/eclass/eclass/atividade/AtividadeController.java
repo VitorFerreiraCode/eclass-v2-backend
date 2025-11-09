@@ -40,7 +40,7 @@ public class AtividadeController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/obter/{id}")
+    @GetMapping("/list/{id}")
     public ResponseEntity<AtividadeModel> obterAtividadePorId(@PathVariable UUID id) {
         return atividadeService.obterAtividadePorId(id)
             .map(ResponseEntity::ok)
