@@ -2,6 +2,15 @@ C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\alu
 C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\aluno\AlunoModel.java
 C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\aluno\AlunoService.java
 C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\aluno\IAlunoRepository.java
+C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\atividade\AtividadeController.java
+C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\atividade\AtividadeModel.java
+C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\atividade\AtividadeService.java
+C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\atividade\IAtividadeRepository.java
+C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\avaliacao\AvaliacaoController.java
+C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\avaliacao\AvaliacaoModel.java
+C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\avaliacao\AvaliacaoService.java
+C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\avaliacao\IAvalicaoRepository.java
+C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\CorsConfig.java
 C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\disciplinas\DisciplinaController.java
 C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\disciplinas\DisciplinaModel.java
 C:\Users\Vitor\Desktop\eclass-back\eclass\src\main\java\br\com\eclass\eclass\disciplinas\DisciplinaService.java
