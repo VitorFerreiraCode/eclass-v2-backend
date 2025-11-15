@@ -28,5 +28,9 @@ public class AvaliacaoService {
         return avaliacaoRepository.findById(id);
     }
 
+    public java.util.List<AvaliacaoModel> listarAvaliacoes() {
+        return avaliacaoRepository.findAll();
+    }
+
 
 }

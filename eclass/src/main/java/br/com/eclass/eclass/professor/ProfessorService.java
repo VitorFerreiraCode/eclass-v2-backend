@@ -27,5 +27,13 @@ public class ProfessorService {
     public void deletarProfessor(UUID id) {
         professorRepository.deleteById(id);
     }
+
+    public ProfessorModel obterProfessorPorId(UUID id) {
+        return professorRepository.findById(id).orElseThrow(() -> new RuntimeException("Professor não encontrado."));
+    }
+
+    public java.util.List<ProfessorModel> listarProfessores() {
+        return professorRepository.findAll();
+    }
     
 }

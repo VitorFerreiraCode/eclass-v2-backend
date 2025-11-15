@@ -46,5 +46,10 @@ public class ConteudoController {
         return ResponseEntity.ok(conteudo);
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<java.util.List<ConteudoModel>> listarConteudos() {
+        java.util.List<ConteudoModel> conteudos = conteudoService.listarConteudos();
+        return ResponseEntity.ok(conteudos);
+    }
 
 }

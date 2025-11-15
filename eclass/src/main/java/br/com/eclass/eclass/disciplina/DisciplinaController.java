@@ -60,4 +60,10 @@ public class DisciplinaController {
         }
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<java.util.List<DisciplinaModel>> listarDisciplinas() {
+        java.util.List<DisciplinaModel> disciplinas = disciplinaService.listarDisciplinas();
+        return ResponseEntity.ok(disciplinas);
+    }
+
 }

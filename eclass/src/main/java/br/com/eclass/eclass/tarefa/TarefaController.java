@@ -52,4 +52,10 @@ public class TarefaController {
         }
     }       
 
+    @GetMapping("/list")
+    public ResponseEntity<java.util.List<TarefaModel>> listarTarefas() {
+        java.util.List<TarefaModel> tarefas = tarefaService.listarTarefas();
+        return ResponseEntity.ok(tarefas);
+    }
+
 }

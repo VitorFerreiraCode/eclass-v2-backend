@@ -51,4 +51,16 @@ public class ProfessorController {
         }
     }
 
+    @GetMapping("/list/{id}")
+    public ResponseEntity<ProfessorModel> getById(@PathVariable UUID id) {
+        ProfessorModel professor = professorService.obterProfessorPorId(id);
+        return ResponseEntity.ok(professor);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<java.util.List<ProfessorModel>> listarProfessores() {
+        java.util.List<ProfessorModel> professores = professorService.listarProfessores();
+        return ResponseEntity.ok(professores);
+    }
+
 }

@@ -25,4 +25,8 @@ public class AtividadeService {
         return atividadeRepository.findById(id);
     }
 
+    public java.util.List<AtividadeModel> listarAtividades() {
+        return atividadeRepository.findAll();
+    }
+
 }

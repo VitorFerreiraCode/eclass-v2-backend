@@ -1,5 +1,6 @@
 package br.com.eclass.eclass.tarefa;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ public class TarefaService {
         return tarefaRepository.findById(id).orElse(null);
     }
 
-    public Iterable<TarefaModel> obterTodasTarefas() {
-        return tarefaRepository.findAll();
+    public List<TarefaModel> listarTarefas() {
+        return (List<TarefaModel>) tarefaRepository.findAll();
     }
 
 }

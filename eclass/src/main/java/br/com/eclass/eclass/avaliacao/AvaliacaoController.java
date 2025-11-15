@@ -49,4 +49,10 @@ public class AvaliacaoController {
             .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<java.util.List<AvaliacaoModel>> listarAvaliacoes() {
+        java.util.List<AvaliacaoModel> avaliacoes = avaliacaoService.listarAvaliacoes();
+        return ResponseEntity.ok(avaliacoes);
+    }
+
 }

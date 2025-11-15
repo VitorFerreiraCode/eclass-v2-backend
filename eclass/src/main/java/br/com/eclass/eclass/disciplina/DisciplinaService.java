@@ -55,4 +55,8 @@ public class DisciplinaService {
         return disciplinaRepository.findById(id).orElse(null);
     }
 
+    public java.util.List<DisciplinaModel> listarDisciplinas() {
+        return disciplinaRepository.findAll();
+    }
+
 }

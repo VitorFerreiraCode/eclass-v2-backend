@@ -47,6 +47,12 @@ public class AtividadeController {
             .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<java.util.List<AtividadeModel>> listarAtividades() {
+        java.util.List<AtividadeModel> atividades = atividadeService.listarAtividades();
+        return ResponseEntity.ok(atividades);
+    }
+
     
 
 }

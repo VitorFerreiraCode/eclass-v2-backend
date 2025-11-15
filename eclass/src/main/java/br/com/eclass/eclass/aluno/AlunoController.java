@@ -59,7 +59,7 @@ public class AlunoController {
             .orElse(ResponseEntity.notFound().build());
     }
     
-    @GetMapping("/listar")
+    @GetMapping("/list")
     public ResponseEntity<List<AlunoModel>> getAll() {
         var alunos = alunoService.obterTodos();
         return ResponseEntity.ok(alunos);

@@ -27,5 +27,9 @@ public class ConteudoService {
         return conteudoRepository.findById(id).orElseThrow(() -> new RuntimeException("Conteúdo não encontrado."));
     }
 
+    public java.util.List<ConteudoModel> listarConteudos() {
+        return conteudoRepository.findAll();
+    }
+
 
 }
