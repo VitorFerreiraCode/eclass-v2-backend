@@ -17,37 +17,37 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/cargos")
+@RequestMapping("/cargo")
 public class CargoController {
     
     @Autowired
     private CargoService cargoService;
 
-    @PostMapping("/create")
+    @PostMapping("/criar")
     public ResponseEntity<?> criarCargo(@RequestBody CargoModel cargoModel) {
         CargoModel novoCargo = cargoService.criarCargo(cargoModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoCargo);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<?> editarCargo(@PathVariable UUID id, @RequestBody CargoModel cargoModel) {
         cargoModel.setId(id);
         CargoModel cargoAtualizado = cargoService.editarCargo(cargoModel);
         return ResponseEntity.ok(cargoAtualizado);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> deletarCargo(@PathVariable UUID id) {
         cargoService.deletarCargo(id);
         return ResponseEntity.ok("Cargo excluído: " + id);
     }
 
-    @GetMapping("/list/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<CargoModel> obterCargoPorId(@PathVariable UUID id) {
         CargoModel cargo = cargoService.obterCargoPorId(id);
         return ResponseEntity.ok(cargo);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public ResponseEntity<List<CargoModel>> listarCargos() {
         List<CargoModel> cargos = cargoService.listarCargos();
         return ResponseEntity.ok(cargos);

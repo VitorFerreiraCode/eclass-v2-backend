@@ -15,39 +15,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/atividades")
+@RequestMapping("/atividade")
 public class AtividadeController {
 
     @Autowired
     private AtividadeService atividadeService;
 
-    @PostMapping("/create")
+    @PostMapping("/criar")
     public ResponseEntity<AtividadeModel> criarAtividade(@RequestBody AtividadeModel atividadeModel) {
         AtividadeModel novaAtividade = atividadeService.criarAtividade(atividadeModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaAtividade);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<AtividadeModel> editarAtividade(@PathVariable UUID id, @RequestBody AtividadeModel atividadeModel) {
         atividadeModel.setId(id);
         AtividadeModel atividadeAtualizada = atividadeService.editarAtividade(atividadeModel);
         return ResponseEntity.ok(atividadeAtualizada);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<Void> deletarAtividade(@PathVariable UUID id) {
         atividadeService.deletarAtividade(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/list/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<AtividadeModel> obterAtividadePorId(@PathVariable UUID id) {
         return atividadeService.obterAtividadePorId(id)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public ResponseEntity<java.util.List<AtividadeModel>> listarAtividades() {
         java.util.List<AtividadeModel> atividades = atividadeService.listarAtividades();
         return ResponseEntity.ok(atividades);

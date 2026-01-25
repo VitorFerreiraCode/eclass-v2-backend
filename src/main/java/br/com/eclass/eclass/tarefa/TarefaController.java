@@ -17,32 +17,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
-@RequestMapping("/tarefas")
+@RequestMapping("/tarefa")
 public class TarefaController {
     
     @Autowired
     private TarefaService tarefaService;
 
-    @PostMapping("/create")
+    @PostMapping("/criar")
     public ResponseEntity<TarefaModel> criarTarefa(@RequestBody TarefaModel tarefaModel) {
         TarefaModel novaTarefa = tarefaService.criarTarefa(tarefaModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaTarefa);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<TarefaModel> editarTarefa(@PathVariable UUID id, @RequestBody TarefaModel tarefaModel) {
         tarefaModel.setId(id);
         TarefaModel tarefaAtualizada = tarefaService.editarTarefa(tarefaModel);
         return ResponseEntity.ok(tarefaAtualizada);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<Void> deletarTarefa(@PathVariable UUID id) {
         tarefaService.deletarTarefa(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/list/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<TarefaModel> obterTarefaPorId(@PathVariable UUID id) {
         TarefaModel tarefa = tarefaService.obterTarefaPorId(id);
         if (tarefa != null) {
@@ -52,7 +52,7 @@ public class TarefaController {
         }
     }       
 
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public ResponseEntity<java.util.List<TarefaModel>> listarTarefas() {
         java.util.List<TarefaModel> tarefas = tarefaService.listarTarefas();
         return ResponseEntity.ok(tarefas);

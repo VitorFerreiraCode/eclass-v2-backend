@@ -17,39 +17,39 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
-@RequestMapping("/avaliacoes")
+@RequestMapping("/avaliacao")
 public class AvaliacaoController {
     
     @Autowired
     private AvaliacaoService avaliacaoService;
 
-    @PostMapping("/create")
+    @PostMapping("/criar")
     public ResponseEntity<?> criarAvaliacao(@RequestBody AvaliacaoModel avaliacaoModel) {
         AvaliacaoModel novaAvaliacao = avaliacaoService.criarAvaliacao(avaliacaoModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaAvaliacao);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<?> editarAvaliacao(@PathVariable UUID id, @RequestBody AvaliacaoModel avaliacaoModel) {
         avaliacaoModel.setId(id);
         AvaliacaoModel avaliacaoAtualizada = avaliacaoService.editarAvaliacao(avaliacaoModel);
         return ResponseEntity.ok(avaliacaoAtualizada);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> deletarAvaliacao(@PathVariable UUID id) {
         avaliacaoService.deletarAvaliacao(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/list/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<AvaliacaoModel> obterAvaliacaoPorId(@PathVariable UUID id) {
         return avaliacaoService.obterAvaliacaoPorId(id)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public ResponseEntity<java.util.List<AvaliacaoModel>> listarAvaliacoes() {
         java.util.List<AvaliacaoModel> avaliacoes = avaliacaoService.listarAvaliacoes();
         return ResponseEntity.ok(avaliacoes);

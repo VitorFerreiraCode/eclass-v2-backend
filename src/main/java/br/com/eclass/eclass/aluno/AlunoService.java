@@ -16,7 +16,6 @@ public class AlunoService {
 
     public AlunoModel criarAluno(AlunoModel alunoModel) {
 
-        // Verificações de duplicidade
         if (alunoRepository.findByEmail(alunoModel.getEmail()) != null) {
             throw new RuntimeException("Usuário com este email já existe.");
         }

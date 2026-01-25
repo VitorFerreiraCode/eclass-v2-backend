@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/disciplinas")
+@RequestMapping("/disciplina")
 public class DisciplinaController {
     
     @Autowired
     private DisciplinaService disciplinaService;
 
-    @PostMapping("/create")
+    @PostMapping("/criar")
     public ResponseEntity<?> postMethodName(@RequestBody DisciplinaModel disciplinaModel) {
         try {
             var disciplinaCriada = disciplinaService.criarDisciplina(disciplinaModel);
@@ -30,8 +30,8 @@ public class DisciplinaController {
         }
     }
 
-    @PutMapping("/edit")
-    public ResponseEntity<?> editarDisciplina(@RequestBody DisciplinaModel disciplinaModel) {
+    @PutMapping("/editar/{id}")
+    public ResponseEntity<?> editarDisciplina(@PathVariable UUID id, @RequestBody DisciplinaModel disciplinaModel) {
         try {
             var disciplinaEditada = disciplinaService.editarDisciplina(disciplinaModel);
             return ResponseEntity.status(200).body(disciplinaEditada);
@@ -40,7 +40,7 @@ public class DisciplinaController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> deletarDisciplina(@PathVariable UUID id) {
         try {
             disciplinaService.deletarDisciplina(id);
@@ -50,7 +50,7 @@ public class DisciplinaController {
         }
     }
 
-    @GetMapping("/list/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<DisciplinaModel> obterDisciplinaPorId(@PathVariable UUID id) {
         DisciplinaModel disciplina = disciplinaService.obterDisciplinaPorId(id);
         if (disciplina != null) {
@@ -60,7 +60,7 @@ public class DisciplinaController {
         }
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public ResponseEntity<java.util.List<DisciplinaModel>> listarDisciplinas() {
         java.util.List<DisciplinaModel> disciplinas = disciplinaService.listarDisciplinas();
         return ResponseEntity.ok(disciplinas);

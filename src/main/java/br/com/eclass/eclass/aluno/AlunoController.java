@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("/alunos")
+@RequestMapping("/aluno")
 public class AlunoController {
     
     @Autowired
     private AlunoService alunoService;
 
-    @PostMapping("/create")
+    @PostMapping("/criar")
     public ResponseEntity<?> postMethodName(@RequestBody AlunoModel alunoModel) {
         try {
             var alunoCriado = alunoService.criarAluno(alunoModel);
@@ -32,7 +32,7 @@ public class AlunoController {
         }
     }
 
-    @PutMapping("/edit")
+    @PutMapping("/editar")
     public ResponseEntity<?> editAluno(@RequestBody AlunoModel alunoModel) {
         try {
             var alunoEditado = alunoService.editarAluno(alunoModel);
@@ -42,7 +42,7 @@ public class AlunoController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> deleteAluno(@PathVariable UUID id) {
         try {
             alunoService.deletarAluno(id);
@@ -52,14 +52,14 @@ public class AlunoController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<AlunoModel> getById(@PathVariable UUID id) {
         return alunoService.obterAlunoPorId(id)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
     
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public ResponseEntity<List<AlunoModel>> getAll() {
         var alunos = alunoService.obterTodos();
         return ResponseEntity.ok(alunos);

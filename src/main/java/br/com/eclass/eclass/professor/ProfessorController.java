@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @RestController
-@RequestMapping("/professores")
+@RequestMapping("/professor")
 public class ProfessorController {
     
     @Autowired
     private ProfessorService professorService;
 
-    @PostMapping("/create")
+    @PostMapping("/criar")
     public ResponseEntity<?> postMethodName(@RequestBody ProfessorModel professorModel) {
         try {
             var professorCriado = professorService.criarProfessor(professorModel);
@@ -32,8 +32,8 @@ public class ProfessorController {
         }
     }
 
-    @PutMapping("/edit")
-    public ResponseEntity<?> editProfessor(@RequestBody ProfessorModel professorModel) {
+    @PutMapping("/editar/{id}")
+    public ResponseEntity<?> editProfessor(@PathVariable UUID id, @RequestBody ProfessorModel professorModel) {
         try {
             var professorEditado = professorService.editarProfessor(professorModel);
             return ResponseEntity.ok(professorEditado);
@@ -42,7 +42,7 @@ public class ProfessorController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> deleteProfessor(@PathVariable UUID id) {
         try {
             professorService.deletarProfessor(id);
@@ -52,13 +52,13 @@ public class ProfessorController {
         }
     }
 
-    @GetMapping("/list/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<ProfessorModel> getById(@PathVariable UUID id) {
         ProfessorModel professor = professorService.obterProfessorPorId(id);
         return ResponseEntity.ok(professor);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public ResponseEntity<java.util.List<ProfessorModel>> listarProfessores() {
         java.util.List<ProfessorModel> professores = professorService.listarProfessores();
         return ResponseEntity.ok(professores);

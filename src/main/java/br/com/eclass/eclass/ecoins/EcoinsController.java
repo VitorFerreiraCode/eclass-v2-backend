@@ -15,28 +15,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/ecoins")
+@RequestMapping("/ecoin")
 public class EcoinsController {
     
     @Autowired
     private EcoinsService ecoinsService;
 
-    @PostMapping("/create")
+    @PostMapping("/criar")
     public EcoinsModel criarEcoins(@RequestBody EcoinsModel ecoinsModel) {
         return ecoinsService.criarEcoins(ecoinsModel);
     }
 
-    @PutMapping("/edit/{id}")
-    public EcoinsModel editarEcoins(@RequestBody EcoinsModel ecoinsModel) {
+    @PutMapping("/editar/{id}")
+    public EcoinsModel editarEcoins(@PathVariable UUID id, @RequestBody EcoinsModel ecoinsModel) {
+        ecoinsModel.setId(id);
         return ecoinsService.editarEcoins(ecoinsModel);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public void deletarEcoins(@PathVariable UUID id) {
         ecoinsService.deletarEcoins(id);
     }
 
-    @GetMapping("/list/{id}")
+    @GetMapping("/listar/{id}")
     public EcoinsModel obterEcoinsPorId(@PathVariable UUID id) {
         return ecoinsService.obterEcoinsPorId(id);
     }

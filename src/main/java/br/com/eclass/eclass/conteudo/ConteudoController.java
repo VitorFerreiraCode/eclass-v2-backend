@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/conteudos")
+@RequestMapping("/conteudo")
 public class ConteudoController {
     
     @Autowired
     private ConteudoService conteudoService;
 
-    @PostMapping("/create")
+    @PostMapping("/criar")
     public ResponseEntity<?> criarConteudo(@RequestBody ConteudoModel conteudoModel) {
         ConteudoModel novoConteudo = conteudoService.criarConteudo(conteudoModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoConteudo);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<?> editarConteudo(@PathVariable UUID id, @RequestBody ConteudoModel conteudoModel) {
         conteudoModel.setId(id);
         ConteudoModel conteudoAtualizado = conteudoService.editarConteudo(conteudoModel);
         return ResponseEntity.ok(conteudoAtualizado);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> deletarConteudo(@PathVariable UUID id) {
         conteudoService.deletarConteudo(id);
         return ResponseEntity.ok("Conteúdo excluído: " + id);
     }
 
-    @GetMapping("/list/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<ConteudoModel> obterConteudoPorId(@PathVariable UUID id) {
         ConteudoModel conteudo = conteudoService.obterConteudoPorId(id);
         return ResponseEntity.ok(conteudo);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public ResponseEntity<java.util.List<ConteudoModel>> listarConteudos() {
         java.util.List<ConteudoModel> conteudos = conteudoService.listarConteudos();
         return ResponseEntity.ok(conteudos);

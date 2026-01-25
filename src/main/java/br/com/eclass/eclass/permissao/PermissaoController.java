@@ -16,37 +16,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/permissoes")
+@RequestMapping("/permissao")
 public class PermissaoController {
     
     @Autowired
     private PermissaoService permissaoService;
 
-    @PostMapping("/create")
+    @PostMapping("/criar")
     public ResponseEntity<?> criarPermissao(@RequestBody PermissaoModel permissaoModel) {
         PermissaoModel novaPermissao = permissaoService.criarPermissao(permissaoModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaPermissao);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<?> editarPermissao(@PathVariable UUID id, @RequestBody PermissaoModel permissaoModel) {
         permissaoModel.setId(id);
         PermissaoModel permissaoAtualizada = permissaoService.editarPermissao(permissaoModel);
         return ResponseEntity.ok(permissaoAtualizada);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> deletarPermissao(@PathVariable UUID id) {
         permissaoService.deletarPermissao(id);
         return ResponseEntity.ok("Permissão excluída: " + id);
     }
 
-    @GetMapping("/list/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<PermissaoModel> obterPermissaoPorId(@PathVariable UUID id) {
         PermissaoModel permissao = permissaoService.obterPermissaoPorId(id);
         return ResponseEntity.ok(permissao);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public ResponseEntity<List<PermissaoModel>> listarPermissoes() {
         List<PermissaoModel> permissoes = permissaoService.listarPermissoes();
         return ResponseEntity.ok(permissoes);

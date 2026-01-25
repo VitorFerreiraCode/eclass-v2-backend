@@ -21,22 +21,22 @@ public class TurmaController {
         return turmaService.criarTurma(turmaModel);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/editar/{id}")
     public TurmaModel editarTurma(@PathVariable UUID id, @RequestBody TurmaModel turmaModel) {
         return turmaService.editarTurma(turmaModel);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public void deletarTurma(@PathVariable UUID id) {
         turmaService.deletarTurma(id);
     }
 
-    @GetMapping("/list/{id}")
+    @GetMapping("/listar/{id}")
     public TurmaModel obterTurmaPorId(@PathVariable UUID id) {
         return turmaService.obterTurmaPorId(id);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public List<TurmaModel> listarTurmas() {
         return turmaService.listarTurmas();
     }
